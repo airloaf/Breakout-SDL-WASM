@@ -31,6 +31,8 @@
 *.out
 *.app
 
+# Ignore VScode
+.vscode/
 
 # Ignore build files
 build/

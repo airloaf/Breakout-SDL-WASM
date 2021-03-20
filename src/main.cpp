@@ -1,6 +1,8 @@
-#include <iostream>
+#include "Game.h"
 
 int main(int argc, char *argv[]){
-    std::cout << "Hello World!" << std::endl;
+    Game g("Breakout", 1600, 900);
+    g.run();
+
     return 0;
 }
