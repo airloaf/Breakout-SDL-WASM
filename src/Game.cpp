@@ -2,9 +2,6 @@
 #include "Game.h"
 #include "Renderer.h"
 
-#define FPS 60
-#define FRAME_PERIOD (Uint32)(1000 / FPS)
-
 Game::Game(const std::string &title, int width, int height)
     : mWindowTitle(title),
       mWindowWidth(width),
