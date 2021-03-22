@@ -1,17 +1,22 @@
+#include "Constants.h"
 #include "Game.h"
 
 #ifdef EMSCRIPTEN
 #include <emscripten/emscripten.h>
 
+Uint32 timeSinceLastFrame;
+
 void gameLoop(void *arg)
 {
-    ((Game *)arg)->tick();
+    Uint32 delta = SDL_GetTicks() - timeSinceLastFrame;
+    ((Game *)arg)->tick(delta);
+    timeSinceLastFrame = SDL_GetTicks();
 }
 #endif
 
 int main(int argc, char *argv[])
 {
-    Game g("Breakout", 1600, 900);
+    Game g("Breakout", WINDOW_WIDTH, WINDOW_HEIGHT);
 
 #ifdef EMSCRIPTEN
     emscripten_set_main_loop_arg(

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Entity.h"
+
 #include <SDL2/SDL.h>
 #include <string>
 
@@ -11,14 +13,17 @@ public:
 
     void run();
 
-#ifdef EMSCRIPTEN
-    void tick();
-
+#ifndef EMSCRIPTEN
 private:
-#else
-private:
-    void tick();
 #endif
+    void tick(Uint32 delta);
+#ifdef EMSCRIPTEN
+private:
+#endif
+
+    void input();
+    void update(Uint32 delta);
+    void render();
 
     SDL_Window *mWindow;
     SDL_Renderer *mRenderer;
@@ -30,4 +35,6 @@ private:
     bool mQuit;
 
     Uint32 mFrameTime;
+
+    Entity mPaddle;
 };

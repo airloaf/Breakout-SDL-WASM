@@ -1,0 +1,12 @@
+#pragma once
+
+#define WINDOW_WIDTH 1600
+#define WINDOW_HEIGHT 900
+
+#define SCALE 10
+
+#define WORLD_WIDTH (WINDOW_WIDTH/SCALE)
+#define WORLD_HEIGHT (WINDOW_HEIGHT/SCALE)
+
+#define PADDLE_WIDTH 20
+#define PADDLE_HEIGHT 2
