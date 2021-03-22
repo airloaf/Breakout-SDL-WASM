@@ -8,10 +8,10 @@ void renderEntity(SDL_Renderer *renderer, Entity &entity)
     Transform entityTransform = entity.getTransform();
 
     SDL_Rect renderRect;
-    renderRect.x = entityTransform.x * SCALE;
-    renderRect.y = entityTransform.y * SCALE;
-    renderRect.w = entityTransform.w * SCALE;
-    renderRect.h = entityTransform.h * SCALE;
+    renderRect.x = entityTransform.pos.x * SCALE;
+    renderRect.y = entityTransform.pos.y * SCALE;
+    renderRect.w = entityTransform.dim.w * SCALE;
+    renderRect.h = entityTransform.dim.h * SCALE;
 
     SDL_RenderFillRect(renderer, &renderRect);
 }

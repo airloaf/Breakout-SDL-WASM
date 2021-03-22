@@ -19,6 +19,11 @@ Transform &Entity::getTransform()
     return mTransform;
 }
 
+Vec &Entity::getVelocityVector()
+{
+    return mVelocity;
+}
+
 unsigned int Entity::getID()
 {
     return mID;

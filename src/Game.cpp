@@ -1,5 +1,6 @@
 #include "Constants.h"
 #include "Game.h"
+#include "Physics.h"
 #include "Renderer.h"
 
 Game::Game(const std::string &title, int width, int height)
@@ -26,10 +27,12 @@ Game::Game(const std::string &title, int width, int height)
     SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xFF);
 
     Transform &t = mPaddle.getTransform();
-    t.x = WORLD_WIDTH/2 - PADDLE_WIDTH/2;
-    t.y = WORLD_HEIGHT - (PADDLE_HEIGHT*1.5);
-    t.w = PADDLE_WIDTH;
-    t.h = PADDLE_HEIGHT;
+    t.pos.x = WORLD_WIDTH/2 - PADDLE_WIDTH/2;
+    t.pos.y = WORLD_HEIGHT - (PADDLE_HEIGHT*1.5);
+    t.dim.w = PADDLE_WIDTH;
+    t.dim.h = PADDLE_HEIGHT;
+    mPaddle.getVelocityVector().x = 0;
+    mPaddle.getVelocityVector().y = 0;
 }
 
 Game::~Game()
@@ -78,11 +81,26 @@ void Game::input()
         {
             mQuit = true;
         }
+        else if(e.type == SDL_KEYDOWN)
+        {
+            if(e.key.keysym.sym == SDLK_LEFT)
+            {
+                mPaddle.getVelocityVector().x = -PADDLE_SPEED;
+            }else if(e.key.keysym.sym == SDLK_RIGHT)
+            {
+                mPaddle.getVelocityVector().x = PADDLE_SPEED;
+            }
+        }
+        else if(e.type == SDL_KEYUP)
+        {
+            mPaddle.getVelocityVector().x = 0;
+        }
     }
 }
 
 void Game::update(Uint32 delta)
 {
+    updatePosition(delta, mPaddle);
 }
 
 void Game::render()
