@@ -23,7 +23,7 @@ Game::Game(const std::string &title, int width, int height)
                                    -1,
                                    SDL_RENDERER_ACCELERATED);
 
-    SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xFF);
+    SDL_SetRenderDrawColor(mRenderer, 0xFF, 0x70, 0x00, 0xFF);
 }
 
 Game::~Game()

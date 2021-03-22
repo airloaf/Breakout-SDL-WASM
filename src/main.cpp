@@ -2,9 +2,7 @@
 
 #ifdef EMSCRIPTEN
 #include <emscripten/emscripten.h>
-#endif
 
-#ifdef EMSCRIPTEN
 void gameLoop(void *arg)
 {
     ((Game *)arg)->tick();
