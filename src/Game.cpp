@@ -137,13 +137,12 @@ void Game::update(Uint32 delta)
         for (Collision col : blockCollisions)
         {
             mBall.getVelocityVector().y = -mBall.getVelocityVector().y;
-            std::remove_if(mBlocks.begin(), mBlocks.end(), [col](Entity &lhs) {
-                if (lhs.getID() == col.victimID)
-                {
-                    return true;
+            for(auto it = mBlocks.begin(); it != mBlocks.end(); it++){
+                if(it->getID() == col.victimID){
+                    mBlocks.erase(it);
+                    break;
                 }
-                return false;
-            });
+            }
         }
 
         // Check for paddle collision
