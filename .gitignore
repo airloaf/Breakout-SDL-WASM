@@ -34,5 +34,12 @@
 # Ignore VScode
 .vscode/
 
+# Ignore CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
 # Ignore build files
 build/
+bin/

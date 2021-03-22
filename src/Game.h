@@ -11,8 +11,14 @@ public:
 
     void run();
 
+#ifdef EMSCRIPTEN
+    void tick();
+
+private:
+#else
 private:
     void tick();
+#endif
 
     SDL_Window *mWindow;
     SDL_Renderer *mRenderer;
