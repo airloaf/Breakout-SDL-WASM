@@ -101,9 +101,11 @@ void Game::input()
             }
             else if (e.key.keysym.sym == SDLK_SPACE)
             {
-                mBallHold = false;
-                mBall.getVelocityVector().x = BALL_SPEED;
-                mBall.getVelocityVector().y = -BALL_SPEED;
+                if(mBallHold){
+                    mBallHold = false;
+                    mBall.getVelocityVector().x = BALL_SPEED;
+                    mBall.getVelocityVector().y = -BALL_SPEED;
+                }
             }
         }
     }
