@@ -33,6 +33,8 @@ Game::Game(const std::string &title, int width, int height)
     t.dim.h = PADDLE_HEIGHT;
     mPaddle.getVelocityVector().x = 0;
     mPaddle.getVelocityVector().y = 0;
+
+    generateLevel();
 }
 
 Game::~Game()
@@ -109,6 +111,27 @@ void Game::render()
     SDL_RenderClear(mRenderer);
 
     renderEntity(mRenderer, mPaddle);
+    for(Entity block: mBlocks){
+        renderEntity(mRenderer, block);
+    }
 
     SDL_RenderPresent(mRenderer);
+}
+
+void Game::generateLevel()
+{
+    Transform blockPos;
+    blockPos.dim.w = BLOCK_WIDTH;
+    blockPos.dim.h = BLOCK_HEIGHT;
+
+    for(float x = 0; x < WORLD_WIDTH; x += (BLOCK_WIDTH + BLOCK_SPACER_X))
+    {
+        for(float y = 0; y < WORLD_HEIGHT/2; y += (BLOCK_HEIGHT + BLOCK_SPACER_Y)) {
+            blockPos.pos.x = x;
+            blockPos.pos.y = y;
+
+            mBlocks.push_back(Entity(blockPos, BLOCK_ID));
+        }
+    }
+
 }

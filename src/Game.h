@@ -3,7 +3,9 @@
 #include "Entity.h"
 
 #include <SDL2/SDL.h>
+
 #include <string>
+#include <list>
 
 class Game
 {
@@ -25,6 +27,8 @@ private:
     void update(Uint32 delta);
     void render();
 
+    void generateLevel();
+
     SDL_Window *mWindow;
     SDL_Renderer *mRenderer;
 
@@ -37,4 +41,5 @@ private:
     Uint32 mFrameTime;
 
     Entity mPaddle;
+    std::list<Entity> mBlocks;
 };

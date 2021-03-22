@@ -14,3 +14,8 @@
 #define PADDLE_WIDTH        20
 #define PADDLE_HEIGHT       2
 #define PADDLE_SPEED        100
+
+#define BLOCK_WIDTH         10
+#define BLOCK_HEIGHT        2
+#define BLOCK_SPACER_X      2
+#define BLOCK_SPACER_Y      1
