@@ -2,9 +2,10 @@
 
 #include <SDL2/SDL.h>
 
-#define PADDLE_ID 0
-#define BALL_ID 1
-#define BLOCK_ID 2
+#define PADDLE_TAG      0
+#define BALL_TAG        1
+#define BLOCK_TAG       2
+#define BOUNDARY_TAG    3
 
 struct Vec
 {
@@ -29,16 +30,18 @@ struct Transform
 class Entity
 {
 public:
-    Entity(Transform transform, unsigned int id);
-    Entity(unsigned int id);
+    Entity(Transform transform, unsigned int tag);
+    Entity(unsigned int tag);
     ~Entity();
 
     Transform &getTransform();
     Vec &getVelocityVector();
+    unsigned int getTag();
     unsigned int getID();
 
 private:
     Transform mTransform;
     Vec mVelocity;
+    unsigned int mTag;
     unsigned int mID;
 };

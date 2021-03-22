@@ -1,13 +1,17 @@
 #include "Entity.h"
 
-Entity::Entity(Transform transform, unsigned int id)
-    : mTransform(transform), mID(id)
+static unsigned int id = 0;
+
+Entity::Entity(Transform transform, unsigned int tag)
+    : mTransform(transform), mTag(tag)
 {
+    mID = id++;
 }
 
-Entity::Entity(unsigned int id)
-    : mID(id)
+Entity::Entity(unsigned int tag)
+    : mTag(tag)
 {
+    mID = id++;
 }
 
 Entity::~Entity()
@@ -22,6 +26,11 @@ Transform &Entity::getTransform()
 Vec &Entity::getVelocityVector()
 {
     return mVelocity;
+}
+
+unsigned int Entity::getTag()
+{
+    return mTag;
 }
 
 unsigned int Entity::getID()

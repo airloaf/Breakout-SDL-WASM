@@ -41,5 +41,9 @@ private:
     Uint32 mFrameTime;
 
     Entity mPaddle;
+    Entity mBall;
+    Entity mBoundary;
     std::list<Entity> mBlocks;
+
+    bool mBallHold;
 };

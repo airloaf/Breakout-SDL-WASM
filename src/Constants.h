@@ -19,3 +19,7 @@
 #define BLOCK_HEIGHT        2
 #define BLOCK_SPACER_X      2
 #define BLOCK_SPACER_Y      1
+
+#define BALL_WIDTH          2
+#define BALL_HEIGHT         2
+#define BALL_SPEED          60
